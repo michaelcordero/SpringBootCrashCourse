@@ -1,13 +1,17 @@
 package com.corderosoft.tech.photozclone.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
+@Table("PHOTOZ")
 public class Photo {
-    private String id;
+    @Id
+    private Integer id;
     @NotEmpty
     private String fileName;
 
@@ -16,19 +20,14 @@ public class Photo {
     @JsonIgnore
     private byte [] data;
 
-    public Photo(String id, String fileName) {
-        this.id = id;
-        this.fileName = fileName;
-    }
-
     public Photo() {
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
